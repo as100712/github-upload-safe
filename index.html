@@ -1,0 +1,317 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Modeling Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=32" />
+    <script>
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+      }
+    </script>
+  </head>
+  <body>
+    <main class="page-shell" aria-label="CHL opening page">
+      <section class="hero" id="home">
+        <video class="hero-video" autoplay muted playsinline poster="exp_4v10a_00056-audio.mp4.jpg">
+          <source src="exp_4v10a_00056-audio.realesrgan.mp4" type="video/mp4" />
+        </video>
+        <audio class="hero-audio" data-hero-audio src="exp_4v10a_00056-audio.mp3" preload="auto"></audio>
+        <div class="hero-overlay" aria-hidden="true"></div>
+        <div class="hero-frame" aria-hidden="true"></div>
+
+        <header class="topbar">
+          <div class="brand">CHL</div>
+          <nav class="topnav" aria-label="Primary navigation">
+            <a href="#works">Works / 作品</a>
+            <a href="#about">Resume / 简历</a>
+            <a href="#contact">Contact / 联系</a>
+          </nav>
+        </header>
+
+        <div class="hero-copy">
+          <p class="eyebrow">Opening sequence</p>
+          <h1 class="split-flap-title" aria-live="polite" data-split-flap>
+            <span>陈翰林</span>
+          </h1>
+          <p class="lede">3D 场景、道具与 AIGC 动态影像的阶段性作品整理，呈现从模型资产到视觉叙事的完整尝试。</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#works">View Works / 查看作品</a>
+            <a class="button button-secondary" href="#about">Resume / 简历</a>
+          </div>
+        </div>
+
+        <aside class="hero-note" aria-label="Project note">
+          <span class="note-label">2026_8_10</span>
+          <span class="note-value">-minimax_H3</span>
+        </aside>
+
+        <div class="video-controls" aria-label="Video controls">
+          <button class="icon-button" type="button" data-volume-toggle aria-label="关闭声音">
+            <span class="control-icon" aria-hidden="true">◉</span>
+            <span data-volume-label>Sound On</span>
+          </button>
+          <button class="icon-button" type="button" data-video-replay aria-label="再放一次">
+            <span class="control-icon" aria-hidden="true">↻</span>
+            <span>Replay</span>
+          </button>
+        </div>
+        <a class="scroll-cue" href="#works" aria-label="向下滚动到作品展示">
+          <span>Scroll</span>
+          <i aria-hidden="true"></i>
+        </a>
+      </section>
+
+      <section class="content-band" id="works">
+        <div class="content-block">
+          <p class="section-label">Works / 作品</p>
+          <h2>作品展示</h2>
+        </div>
+        <div class="software-marquee" aria-label="专业软件展示">
+          <div class="software-track">
+            <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/unrealengine.svg" alt="" />Unreal Engine</span>
+            <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/blender.svg" alt="" />Blender</span>
+            <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/cinema4d.svg" alt="" />Cinema 4D</span>
+            <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/houdini.svg" alt="" />Houdini</span>
+            <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/adobeaftereffects.svg" alt="" />After Effects</span>
+            <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/adobephotoshop.svg" alt="" />Photoshop</span>
+            <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/davinciresolve.svg" alt="" />DaVinci Resolve</span>
+            <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/unrealengine.svg" alt="" />Unreal Engine</span>
+            <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/blender.svg" alt="" />Blender</span>
+            <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/cinema4d.svg" alt="" />Cinema 4D</span>
+            <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/houdini.svg" alt="" />Houdini</span>
+            <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/adobeaftereffects.svg" alt="" />After Effects</span>
+            <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/adobephotoshop.svg" alt="" />Photoshop</span>
+            <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/davinciresolve.svg" alt="" />DaVinci Resolve</span>
+          </div>
+        </div>
+        <div class="work-category-header">
+          <p class="section-label">Category 01 / 三维</p>
+          <h3>3D</h3>
+        </div>
+        <div class="works-showcase">
+          <div class="gallery-shell">
+            <button class="gallery-arrow gallery-arrow-prev" type="button" data-gallery-prev aria-label="上一张">‹</button>
+            <div class="bounce-cards" data-gallery-category="3d" aria-label="3D 作品展示"></div>
+            <button class="view-all-button" type="button" data-view-all data-view-category="3d">查看全部</button>
+            <button class="gallery-arrow gallery-arrow-next" type="button" data-gallery-next aria-label="下一张">›</button>
+          </div>
+          <div class="showcase-copy spotlight-card">
+            <h3>3D Works</h3>
+            <p>围绕 UE 场景、灯光表现、后期特效与三维道具展开，展示建模、材质、画面氛围和镜头呈现能力。</p>
+          </div>
+        </div>
+        <div class="work-category-header">
+          <p class="section-label">Category 02 / AIGC</p>
+          <h3>AIGC</h3>
+        </div>
+        <div class="works-showcase aigc-showcase">
+          <div class="gallery-shell">
+            <button class="gallery-arrow gallery-arrow-prev" type="button" data-gallery-prev aria-label="上一张">‹</button>
+            <div class="bounce-cards" data-gallery-category="aigc" aria-label="AIGC 作品展示"></div>
+            <button class="view-all-button" type="button" data-view-all data-view-category="aigc">查看全部</button>
+            <button class="gallery-arrow gallery-arrow-next" type="button" data-gallery-next aria-label="下一张">›</button>
+          </div>
+          <div class="showcase-copy spotlight-card">
+            <h3>AIGC Gallery</h3>
+            <p>整理 AI 辅助场景、角色设计与动态影像实验，探索生成式工具在概念设计和短片表达中的应用。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-band split" id="about">
+        <div class="content-block">
+          <p class="section-label">Resume / 简历</p>
+          <h2>陈翰林</h2>
+          <button class="profile-flash-card" type="button" data-profile-card aria-label="翻转个人闪卡">
+            <span class="profile-card-behind" aria-hidden="true"></span>
+            <span class="profile-card-face profile-card-front">
+              <span class="profile-card-shine" aria-hidden="true"></span>
+              <span class="profile-card-glare" aria-hidden="true"></span>
+              <img src="assets/profile-photo.webp" alt="陈翰林证件照" />
+              <span class="profile-card-info">
+                <strong>陈翰林</strong>
+                <em>三维美术设计师 / AIGC Visual</em>
+              </span>
+            </span>
+            <span class="profile-card-face profile-card-back">
+              <span class="profile-card-shine" aria-hidden="true"></span>
+              <span class="profile-card-glare" aria-hidden="true"></span>
+              <img class="profile-card-chart" src="echarts.png" alt="能力雷达图" />
+              <span class="profile-hex-panel" aria-hidden="true">
+                <i>UE</i>
+                <i>3D</i>
+                <i>AI</i>
+                <i>FX</i>
+                <i>SP</i>
+                <i>MG</i>
+              </span>
+              <span class="profile-card-kicker">PROFILE</span>
+              <strong>20040712</strong>
+              <em>3D 场景、道具与 AIGC 动态影像方向</em>
+              <span>UE5 / 3ds Max / Maya / Blender / Substance Painter</span>
+            </span>
+          </button>
+          <div class="profile-card-extra" aria-label="能力概览">
+            <span>UE Lighting</span>
+            <span>Prop Modeling</span>
+            <span>AIGC Motion</span>
+            <span>Post FX</span>
+          </div>
+        </div>
+        <div class="resume-panel">
+          <div class="resume-column resume-profile">
+            <div class="resume-profile-summary">
+              <p class="resume-kicker">Top</p>
+              <h3>陈翰林</h3>
+              <p>应聘岗位：3D 三维美术设计师（游戏建模 / 影视动画 / UE 场景 / AIGC 视觉方向）</p>
+              <p>湖北武汉｜电话：15318939564｜邮箱：15318939564@163.com｜微信：chl2306769833</p>
+              <p>作品集链接：待补充</p>
+            </div>
+            <div class="skill-level">
+              <strong>精通</strong>
+              <p>ZBrush 高模雕刻、TopoGun 拓扑减面、UV 拆分展开、Substance Painter PBR 材质贴图、Marmoset Toolbag 八猴渲染出图、3ds Max 三维动画与影视特效、AI 绘图创作。</p>
+            </div>
+            <div class="skill-level">
+              <strong>熟练</strong>
+              <p>Unreal Engine 5 场景搭建、光照氛围调试、后期 Post FX、Maya 基础建模、Blender 辅助资产制作、Marvelous Designer 布料模拟、AI 视频生成与剪辑、动态镜头制作、素材润色、短片成片输出。</p>
+            </div>
+            <div class="skill-level">
+              <strong>掌握</strong>
+              <p>Procreate 概念原画、MG 视觉动画、影视剪辑后期、AI 资产优化、AI 分层出图、Prompt 精准调参、3D + AI 辅助迭代工作流。</p>
+            </div>
+          </div>
+          <div class="resume-column resume-main">
+            <article>
+              <p class="resume-kicker">Profile 个人简介</p>
+              <p>武汉设计工程学院动画专业 2026 届毕业生，专业 GPA 3.7。精通三维资产 PBR 全流程制作，熟练掌握 ZBrush 高模雕刻、拓扑 UV 拆分、SP 材质烘焙、八猴渲染、UE5 场景搭建与灯光氛围调试、3ds Max 三维动画特效制作。同时熟练掌握 AIGC 视觉创作全链路，可独立完成 AI 概念出图、场景/角色原画生成、3D 资产辅助迭代、AI 视频短片制作与动态视觉包装，能够结合传统三维美术 + AI 工具高效产出高质量视觉内容，适配游戏、影视、短视频视觉项目落地，具备完整项目协作与迭代交付经验。</p>
+            </article>
+            <article>
+              <p class="resume-kicker">Education 教育经历</p>
+              <h3>2022.09 – 2026.06　武汉设计工程学院｜动画专业 本科</h3>
+              <p>主修课程：运动规律、动画造型设计、动画视听语言、3ds Max 三维动画特效、动画影视后期、数字媒体视觉设计、AIGC 数字创作应用。</p>
+            </article>
+            <article>
+              <p class="resume-kicker">Campus Practice 校内实践</p>
+              <h3>大学生创新创业大赛　2024.06 – 2024.07</h3>
+              <ol>
+                <li>担任项目负责人，负责项目视觉体系搭建，完成 3D 演示模型、项目效果图与路演视觉包装，并结合 AI 绘图生成场景概念和宣传视觉素材，项目成功晋级校级选拔赛。</li>
+                <li>参与第二赛道参赛工作，负责 AI 动态视频短片制作、镜头剪辑与画面润色，完善项目路演视听表达，积累静态视觉 + 动态视频的完整落地经验。</li>
+              </ol>
+              <h3>校内中法合作交流会｜成员</h3>
+              <p>参与中外学术交流活动，负责活动视觉物料制作，结合三维设计与 AI 工具制作动态海报、氛围视觉素材，完成物料整理与输出，拓展数字视觉创作与跨文化沟通能力。</p>
+            </article>
+            <article>
+              <p class="resume-kicker">Work Experience 实习&社会实践</p>
+              <h3>2023.09 – 2024.12　禾田软件科技有限公司｜三维建模实习生</h3>
+              <ol>
+                <li>按照项目规范独立完成游戏、影视类三维道具与场景模型制作，严格把控布线规范、面数精简、LOD 层级优化，确保资产导入引擎后稳定可用，符合项目交付标准。</li>
+                <li>独立完成拓扑、UV 拆分、SP 全套 PBR 材质烘焙与贴图输出，使用八猴渲染器完成效果图渲染展示，配合项目需求完成多版本迭代修改。</li>
+                <li>运用 UE5 完成场景搭建、灯光氛围调试、后期特效微调，完善画面光影与质感表现，高效完成美术资产落地交付。</li>
+                <li>结合 AIGC 工具辅助项目生产：通过 AI 快速生成场景概念参考、道具风格稿、光影氛围方案，大幅提升前期出图效率，辅助建模、材质、画面氛围迭代，缩短项目制作周期。</li>
+              </ol>
+              <h3>2023.03 – 2023.04　武汉博昱画室｜教务助教</h3>
+              <p>负责学员日常管理、师生对接与课程秩序维护，梳理教务对接流程，锻炼高效沟通、统筹协调与问题处理能力。</p>
+              <h3>2019.07 – 2019.08　《这就是街舞》武汉赛区｜现场工作人员</h3>
+              <p>统筹现场学员与老师签到、分组对接及现场秩序管理，强化多任务并行执行与临场应变能力。</p>
+            </article>
+            <article>
+              <p class="resume-kicker">Self Assessment 自我评价</p>
+              <p>熟练掌握传统三维美术全流程制作，精通 PBR 建模材质、UE5 场景灯光、三维动画特效，同时具备成熟的 AIGC 图文 + 视频生产能力，熟练掌握 AI 资产优化、精准 Prompt 调参、3D + AI 辅助迭代等核心技巧。能够将 AI 工具与传统美术工作流深度结合，实现「AI 概念出图 - 3D 建模落地 - 材质渲染 - 动态视频成片」全链路高效产出。具备良好的审美能力、快速迭代意识与团队协作能力，适配游戏美术、影视三维、数字视觉、AIGC 内容创作等多岗位需求，愿意长期深耕数字三维视觉领域。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="pressure-section" id="contact" aria-label="Final message">
+        <div class="contact-layout">
+          <div class="contact-main">
+            <p class="section-label">Contact / 联系</p>
+            <h2 class="contact-title">LET'S<br />MAKE.</h2>
+            <p class="contact-note">期待有机会参与项目，与团队一起完成优秀的作品。<br />欢迎通过邮箱、QQ、微信或 B 站联系。</p>
+          </div>
+          <div class="contact-links" aria-label="联系方式">
+            <a href="mailto:15318939564@163.com">
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/maildotru.svg" alt="" />15318939564@163.com
+            </a>
+            <a href="tel:15318939564">
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/phonepe.svg" alt="" />15318939564
+            </a>
+            <a href="https://wpa.qq.com/msgrd?v=3&uin=2306769833&site=qq&menu=yes" target="_blank" rel="noreferrer">
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/tencentqq.svg" alt="" />QQ 2306769833
+            </a>
+            <a href="weixin://dl/chat?chl2306769833" aria-label="微信联系方式 chl2306769833">
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/wechat.svg" alt="" />微信 chl2306769833
+            </a>
+            <a href="https://b23.tv/LqmeoDq" target="_blank" rel="noreferrer">
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/bilibili.svg" alt="" />Bilibili 10as12
+            </a>
+            <a class="button button-primary resume-download" href="CHL_resume.pdf" download>Download PDF / 下载简历</a>
+          </div>
+        </div>
+      </section>
+
+      <h1 class="screen-reader-title">CHL opening page</h1>
+    </main>
+    <div class="glow-cursor" aria-hidden="true"></div>
+    <div class="gradual-blur gradual-blur-top" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="gradual-blur gradual-blur-bottom" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <nav class="side-dock" aria-label="Page navigation">
+      <a class="dock-item" href="#home" aria-label="Home"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/house.svg" alt="" /><small>Home</small></a>
+      <a class="dock-item" href="#works" aria-label="Works"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/images.svg" alt="" /><small>Works</small></a>
+      <a class="dock-item" href="#about" aria-label="Resume"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/user-round.svg" alt="" /><small>Resume</small></a>
+      <a class="dock-item" href="#contact" aria-label="Contact"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/send.svg" alt="" /><small>Contact</small></a>
+    </nav>
+    <dialog class="work-dialog" data-work-dialog aria-label="作品详情">
+      <button class="dialog-close" type="button" data-dialog-close aria-label="关闭详情">×</button>
+      <button class="dialog-expand" type="button" data-dialog-expand aria-label="展开详情页">Expand</button>
+      <div class="dialog-media">
+        <img data-dialog-image data-zoomable src="9998213394983600-e66001a8-f486-478b-a727-9aa68103cd8d-gpt_image_2_official_task_01KZWZA5A7A2PCRVRAZ20HFNC3_0.webp" alt="作品详情图片" />
+      </div>
+      <div class="option-wheel" data-option-wheel aria-label="详情轮牌">
+        <button class="option-wheel__item" type="button" data-detail-option data-index="0">Concept Frame</button>
+        <button class="option-wheel__item" type="button" data-detail-option data-index="1">Video Opening</button>
+        <button class="option-wheel__item" type="button" data-detail-option data-index="2">Motion Detail</button>
+      </div>
+      <section class="dialog-copy">
+        <p class="section-label" data-dialog-kicker>Concept Frame</p>
+        <h2 data-dialog-title>视觉主图</h2>
+        <p data-dialog-text>用于建立首页第一视觉，强调 CHL 字标、明亮留白和作品集入口的识别度。</p>
+      </section>
+    </dialog>
+    <dialog class="image-lightbox" data-image-lightbox aria-label="图片放大查看">
+      <button class="dialog-close" type="button" data-lightbox-close aria-label="关闭图片">×</button>
+      <img data-lightbox-image src="" alt="放大图片" />
+      <video data-lightbox-video controls playsinline hidden></video>
+    </dialog>
+    <dialog class="all-works-dialog" data-all-works-dialog aria-label="全部作品图片">
+      <button class="dialog-close" type="button" data-all-works-close aria-label="关闭全部作品">×</button>
+      <header class="all-works-header">
+        <p class="section-label">All Works / 全部作品</p>
+        <h2>全部图片</h2>
+      </header>
+      <div class="all-works-content" data-all-works-content></div>
+    </dialog>
+    <script src="click-spark.js"></script>
+    <script src="split-flap.js"></script>
+    <script src="text-pressure.js?v=7"></script>
+    <script src="video-controls.js?v=7"></script>
+    <script src="spotlight-card.js"></script>
+    <script src="profile-card.js?v=5"></script>
+    <script src="work-details.js?v=10"></script>
+    <script src="bounce-cards.js?v=6"></script>
+    <script src="gradual-blur.js"></script>
+  </body>
+</html>
+

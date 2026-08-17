@@ -1,0 +1,24 @@
+# OS and editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+*.temp
+*.bak
+*.log
+~$*
+
+# Local dependency/build folders
+node_modules/
+dist/
+build/
+.cache/
+.vite/
+
+# Secrets should never be uploaded
+.env
+.env.*
+
+# Local excluded material
+1/
+*_excluded_from_github/
