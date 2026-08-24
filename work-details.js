@@ -119,6 +119,7 @@
   ];
 
   let currentFolderIndex = 0;
+  let shouldReturnToAllWorks = false;
 
   if (!dialog || !image || !kicker || !title || !text) {
     return;
@@ -232,11 +233,12 @@
     syncDialogCursor();
   }
 
-  function openLightbox(src) {
+  function openLightbox(src, options = {}) {
     if (!src || !lightbox || !lightboxImage || !lightboxVideo) {
       return;
     }
 
+    shouldReturnToAllWorks = Boolean(options.returnToAllWorks);
     closeDialog(dialog);
     closeDialog(allWorksDialog);
 
@@ -327,7 +329,7 @@
     if (allWorkMedia) {
       event.preventDefault();
       event.stopPropagation();
-      openLightbox(allWorkMedia.dataset.allWorkMedia);
+      openLightbox(allWorkMedia.dataset.allWorkMedia, { returnToAllWorks: true });
       return;
     }
 
@@ -394,6 +396,10 @@
   lightboxClose?.addEventListener("click", () => closeDialog(lightbox));
   lightbox?.addEventListener("close", () => {
     lightboxVideo?.pause();
+    if (shouldReturnToAllWorks) {
+      shouldReturnToAllWorks = false;
+      showModal(allWorksDialog);
+    }
   });
   lightbox?.addEventListener("click", (event) => {
     if (event.target === lightbox) {

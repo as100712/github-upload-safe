@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=32" />
+    <link rel="stylesheet" href="styles.css?v=34" />
     <script>
       if ("scrollRestoration" in history) {
         history.scrollRestoration = "manual";
@@ -159,11 +159,17 @@
               <span>UE5 / 3ds Max / Maya / Blender / Substance Painter</span>
             </span>
           </button>
-          <div class="profile-card-extra" aria-label="能力概览">
-            <span>UE Lighting</span>
-            <span>Prop Modeling</span>
-            <span>AIGC Motion</span>
-            <span>Post FX</span>
+          <div class="profile-software-showcase" aria-label="软件展示">
+            <div class="profile-software-showcase__header">
+              <p class="section-label">Software / 软件</p>
+              <strong>常用工具</strong>
+            </div>
+            <div class="profile-software-grid">
+              <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/autodesk.svg" alt="" />3ds Max</span>
+              <span class="software-fallback"><i>PT</i>PT</span>
+              <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/unrealengine.svg" alt="" />UE</span>
+              <span class="software-fallback"><i>ZB</i>ZBrush</span>
+            </div>
           </div>
         </div>
         <div class="resume-panel">
@@ -273,6 +279,9 @@
       <a class="dock-item" href="#about" aria-label="Resume"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/user-round.svg" alt="" /><small>Resume</small></a>
       <a class="dock-item" href="#contact" aria-label="Contact"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/send.svg" alt="" /><small>Contact</small></a>
     </nav>
+    <div class="nav-transition" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+    </div>
     <dialog class="work-dialog" data-work-dialog aria-label="作品详情">
       <button class="dialog-close" type="button" data-dialog-close aria-label="关闭详情">×</button>
       <button class="dialog-expand" type="button" data-dialog-expand aria-label="展开详情页">Expand</button>
@@ -311,6 +320,8 @@
     <script src="profile-card.js?v=5"></script>
     <script src="work-details.js?v=10"></script>
     <script src="bounce-cards.js?v=6"></script>
+    <script src="nav-transition.js"></script>
+    <script src="ui-sound.js"></script>
     <script src="gradual-blur.js"></script>
   </body>
 </html>
