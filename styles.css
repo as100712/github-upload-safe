@@ -1427,8 +1427,7 @@ body.dialog-cursor-visible .glow-cursor {
   inset: 0;
   z-index: 29;
   pointer-events: none;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  display: flex;
   overflow: hidden;
 }
 
@@ -1439,6 +1438,9 @@ body.is-nav-transitioning .nav-transition {
 }
 
 .nav-transition span {
+  flex: 1 0 25%;
+  min-width: calc(25% + 2px);
+  margin-right: -2px;
   transform: translateY(-104%);
   transform-origin: top;
   background: #0d0d0f;
