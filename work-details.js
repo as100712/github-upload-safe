@@ -187,7 +187,7 @@
         .map(({ folder, src }) => {
           const mediaIndex = folder.media.indexOf(src);
           return `
-                    <button class="bounce-card card-${folder.folderIndex}" type="button" data-work-card data-work-index="${folder.folderIndex}" data-media-index="${mediaIndex}" data-media-src="${src}" aria-label="放大查看 ${folder.title} ${mediaIndex + 1}">
+                    <button class="reveal-item bounce-card card-${folder.folderIndex}" type="button" data-work-card data-work-index="${folder.folderIndex}" data-media-index="${mediaIndex}" data-media-src="${src}" aria-label="放大查看 ${folder.title} ${mediaIndex + 1}">
                       ${mediaMarkup(src, `${folder.title} ${mediaIndex + 1}`)}
                       <span class="media-tag">${folder.title}</span>
                       <span class="zoom-chip" data-card-zoom aria-label="放大查看" title="放大查看"></span>
@@ -295,6 +295,7 @@
                     <button class="all-works-item" type="button" data-all-work-media="${src}" data-folder-index="${folderIndex}" data-media-index="${mediaIndex}" aria-label="放大查看 ${folder.title} ${mediaIndex + 1}">
                       ${mediaMarkup(src, `${folder.title} ${mediaIndex + 1}`)}
                       <span>${isVideo(src) ? "Video" : "Image"}</span>
+                      <span class="zoom-chip" aria-hidden="true"></span>
                     </button>
                   `
                 )

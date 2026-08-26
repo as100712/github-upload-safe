@@ -44,6 +44,15 @@
     }, delay);
   }
 
-  tiles.forEach((tile) => setTile(tile, randomChar()));
-  tiles.forEach((tile, index) => animateTile(tile, chars[index], index * stagger));
+  function startSplitFlap() {
+    tiles.forEach((tile) => setTile(tile, randomChar()));
+    tiles.forEach((tile, index) => animateTile(tile, chars[index], index * stagger));
+  }
+
+  if (document.body.classList.contains("site-loading")) {
+    tiles.forEach((tile, index) => setTile(tile, chars[index]));
+    window.addEventListener("boot:enter", () => window.setTimeout(startSplitFlap, 1280), { once: true });
+  } else {
+    startSplitFlap();
+  }
 })();

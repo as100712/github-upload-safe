@@ -120,8 +120,21 @@
     }
   });
 
+  function startHeroVideo() {
+    video.currentTime = 0;
+    if (audio?.getAttribute("src")) {
+      audio.currentTime = 0;
+    }
+    playVideo();
+  }
+
   updateVolumeButton();
-  playVideo();
+  if (document.body.classList.contains("site-loading")) {
+    video.pause();
+    window.addEventListener("boot:enter", startHeroVideo, { once: true });
+  } else {
+    startHeroVideo();
+  }
   document.addEventListener("pointerdown", unlockSoundOnce);
   document.addEventListener("wheel", unlockSoundOnce, { passive: true });
   document.addEventListener("touchstart", unlockSoundOnce, { passive: true });

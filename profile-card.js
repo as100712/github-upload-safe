@@ -1,10 +1,8 @@
 (function () {
   const cards = document.querySelectorAll("[data-profile-card]");
-  const aboutSection = document.querySelector("#about");
 
   cards.forEach((card) => {
     let frameId = null;
-    let autoFlipHandled = false;
     const current = { x: 50, y: 50, rx: 0, ry: 0 };
     const target = { x: 50, y: 50, rx: 0, ry: 0 };
 
@@ -69,35 +67,12 @@
     card.addEventListener("pointerleave", resetCardPointer);
     card.addEventListener("pointerdown", () => {
       card.classList.toggle("is-flipped");
-      autoFlipHandled = true;
     });
     card.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
         card.classList.toggle("is-flipped");
-        autoFlipHandled = true;
       }
     });
-
-    function autoFlipAtResumeMiddle() {
-      if (autoFlipHandled || !aboutSection) {
-        return;
-      }
-
-      const rect = aboutSection.getBoundingClientRect();
-      const progress = (window.innerHeight - rect.top) / Math.max(rect.height, 1);
-      if (progress < 0.5) {
-        return;
-      }
-
-      autoFlipHandled = true;
-      if (!card.classList.contains("is-flipped")) {
-        card.classList.add("is-flipped");
-      }
-    }
-
-    window.addEventListener("scroll", autoFlipAtResumeMiddle, { passive: true });
-    window.addEventListener("resize", autoFlipAtResumeMiddle, { passive: true });
-    autoFlipAtResumeMiddle();
   });
 })();

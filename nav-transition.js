@@ -11,10 +11,37 @@
   let timer = 0;
   const clickAudio = new Audio("assets/ui-click.mp3");
   const transitionAudio = new Audio("assets/nav-transition.mp3");
+  const panels = Array.from(overlay.querySelectorAll("span"));
+  const emojis = [":)", ":D", ":P", ":O", ":/", ";)", "XD", "-_-", "T_T", "O_O", "o_o", "^_^", ">_<", "=]"];
   clickAudio.preload = "auto";
   clickAudio.volume = 0.42;
   transitionAudio.preload = "auto";
   transitionAudio.volume = 0.55;
+
+  panels.forEach((panel) => {
+    if (!panel.querySelector(".nav-transition__face")) {
+      const face = document.createElement("i");
+      face.className = "nav-transition__face";
+      face.setAttribute("aria-hidden", "true");
+      panel.appendChild(face);
+    }
+  });
+
+  function randomizeFaces() {
+    panels.forEach((panel) => {
+      const face = panel.querySelector(".nav-transition__face");
+      if (!face) {
+        return;
+      }
+
+      const rotate = Math.floor(Math.random() * 13) - 6;
+      const size = 0.82 + Math.random() * 0.28;
+
+      face.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      face.style.setProperty("--face-rotate", `${rotate}deg`);
+      face.style.setProperty("--face-scale", size.toFixed(2));
+    });
+  }
 
   function clearTransition() {
     body.classList.remove("is-nav-transitioning");
@@ -47,6 +74,7 @@
 
       event.preventDefault();
       window.clearTimeout(timer);
+      randomizeFaces();
       clickAudio.currentTime = 0;
       clickAudio.play().catch(() => {});
       transitionAudio.currentTime = 0;
