@@ -227,6 +227,11 @@
       if (gallery.hasPointerCapture(event.pointerId)) {
         gallery.releasePointerCapture(event.pointerId);
       }
+      if (didDrag) {
+        window.setTimeout(() => {
+          delete gallery.dataset.didDrag;
+        }, 120);
+      }
       pauseAutoScroll(700);
     }
 
