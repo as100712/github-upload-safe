@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=48" />
+    <link rel="stylesheet" href="styles.css?v=87" />
     <script>
       if ("scrollRestoration" in history) {
         history.scrollRestoration = "manual";
@@ -42,17 +42,22 @@
           <span>BUILDING SCENE</span>
           <span>RENDERING PREVIEW</span>
         </div>
-        <button class="boot-loader__enter" type="button" data-boot-enter aria-label="进入作品集"></button>
+        <button class="boot-loader__enter" type="button" data-boot-enter aria-label="进入作品集">
+          <svg class="boot-loader__enter-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <path class="boot-loader__enter-fill" d="M20 14L50 32L20 50Z"></path>
+            <path class="boot-loader__enter-stroke" d="M20 14L50 32L20 50Z" pathLength="256"></path>
+          </svg>
+        </button>
       </div>
     </div>
     <main class="page-shell" aria-label="CHL opening page">
       <section class="hero" id="home">
-        <video class="hero-video" muted playsinline preload="auto" poster="exp_4v10a_00056-audio.mp4.jpg">
-          <source src="exp_4v10a_00056-audio.realesrgan.mp4" type="video/mp4" />
-        </video>
-        <audio class="hero-audio" data-hero-audio src="exp_4v10a_00056-audio.mp3" preload="auto"></audio>
         <div class="hero-overlay" aria-hidden="true"></div>
         <div class="hero-frame" aria-hidden="true"></div>
+        <div class="hero-band" aria-hidden="true">
+          <span class="hero-band__label">CHL</span>
+        </div>
+        <div class="hero-mosaic" aria-hidden="true"></div>
 
         <header class="topbar">
           <div class="brand">CHL</div>
@@ -64,32 +69,16 @@
         </header>
 
         <div class="hero-copy">
-          <p class="eyebrow">Opening sequence</p>
+          <p class="eyebrow">3D ARTIST PORTFOLIO</p>
           <h1 class="split-flap-title" aria-live="polite" data-split-flap>
-            <span>陈翰林</span>
+            <span>CHL</span>
           </h1>
-          <p class="lede">3D 场景、道具与 AIGC 动态影像的阶段性作品整理，呈现从模型资产到视觉叙事的完整尝试。</p>
           <div class="hero-actions">
             <a class="reveal-item button button-primary" href="#works">View Works / 查看作品</a>
             <a class="reveal-item button button-secondary" href="#about">Resume / 简历</a>
           </div>
         </div>
 
-        <aside class="hero-note" aria-label="Project note">
-          <span class="note-label">2026_8_10</span>
-          <span class="note-value">-minimax_H3</span>
-        </aside>
-
-        <div class="video-controls" aria-label="Video controls">
-          <button class="reveal-item icon-button" type="button" data-volume-toggle aria-label="关闭声音">
-            <span class="control-icon" aria-hidden="true">◉</span>
-            <span data-volume-label>Sound On</span>
-          </button>
-          <button class="reveal-item icon-button" type="button" data-video-replay aria-label="再放一次">
-            <span class="control-icon" aria-hidden="true">↻</span>
-            <span>Replay</span>
-          </button>
-        </div>
         <a class="reveal-item scroll-cue" href="#works" aria-label="向下滚动到作品展示">
           <span>Scroll</span>
           <i aria-hidden="true"></i>
@@ -154,38 +143,15 @@
       </section>
 
       <section class="content-band split" id="about">
-        <div class="content-block">
+          <div class="content-block">
           <p class="section-label">Resume / 简历</p>
           <h2>陈翰林</h2>
-          <button class="reveal-item profile-flash-card" type="button" data-profile-card aria-label="翻转个人闪卡">
-            <span class="profile-card-behind" aria-hidden="true"></span>
-            <span class="profile-card-face profile-card-front">
-              <span class="profile-card-shine" aria-hidden="true"></span>
-              <span class="profile-card-glare" aria-hidden="true"></span>
-              <img src="assets/profile-photo.webp" alt="陈翰林证件照" />
-              <span class="profile-card-info">
-                <strong>陈翰林</strong>
-                <em>三维美术设计师 / AIGC Visual</em>
-              </span>
-            </span>
-            <span class="profile-card-face profile-card-back">
-              <span class="profile-card-shine" aria-hidden="true"></span>
-              <span class="profile-card-glare" aria-hidden="true"></span>
-              <img class="profile-card-chart" src="echarts.png" alt="能力雷达图" />
-              <span class="profile-hex-panel" aria-hidden="true">
-                <i>UE</i>
-                <i>3D</i>
-                <i>AI</i>
-                <i>FX</i>
-                <i>SP</i>
-                <i>MG</i>
-              </span>
-              <span class="profile-card-kicker">PROFILE</span>
-              <strong>20040712</strong>
-              <em>3D 场景、道具与 AIGC 动态影像方向</em>
-              <span>UE5 / 3ds Max / Maya / Blender / Substance Painter</span>
-            </span>
-          </button>
+          <iframe
+            class="reveal-item"
+            title="人物卡"
+            src="operator-card.html"
+            style="width: 320px; height: 560px; border: 0; overflow: hidden; display: block; margin: 18px 0 0 -26px; background: #f3f3f1;"
+          ></iframe>
           <div class="profile-software-showcase" aria-label="软件展示">
             <div class="profile-software-showcase__header">
               <p class="section-label">Software / 软件</p>
@@ -202,7 +168,6 @@
         <div class="resume-panel">
           <div class="resume-column resume-profile">
             <div class="resume-profile-summary">
-              <p class="resume-kicker">Top</p>
               <h3>陈翰林</h3>
               <p>应聘岗位：3D 三维美术设计师（游戏建模 / 影视动画 / UE 场景 / AIGC 视觉方向）</p>
               <p>湖北武汉｜电话：15318939564｜邮箱：15318939564@163.com｜微信：chl2306769833</p>
@@ -270,24 +235,32 @@
             <h2 class="contact-title" data-contact-title>LET'S<br />MAKE.</h2>
             <p class="reveal-item contact-note">期待有机会参与项目，与团队一起完成优秀的作品。<br />欢迎通过邮箱、QQ、微信或 B 站联系。</p>
           </div>
-          <div class="contact-links" aria-label="联系方式">
-            <a class="reveal-item" href="mailto:15318939564@163.com">
-              <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/maildotru.svg" alt="" />15318939564@163.com
+          <nav class="contact-links line-sidebar reveal-item" data-line-sidebar aria-label="联系方式">
+            <a class="line-sidebar__item" href="mailto:15318939564@163.com">
+              <span class="line-sidebar__marker" aria-hidden="true"></span>
+              <span class="line-sidebar__label"><span class="line-sidebar__index">01</span><span class="line-sidebar__text">15318939564@163.com</span><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/maildotru.svg" alt="" /></span>
             </a>
-            <a class="reveal-item" href="tel:15318939564">
-              <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/phonepe.svg" alt="" />15318939564
+            <a class="line-sidebar__item" href="tel:15318939564">
+              <span class="line-sidebar__marker" aria-hidden="true"></span>
+              <span class="line-sidebar__label"><span class="line-sidebar__index">02</span><span class="line-sidebar__text">15318939564</span><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/phonepe.svg" alt="" /></span>
             </a>
-            <a class="reveal-item" href="https://wpa.qq.com/msgrd?v=3&uin=2306769833&site=qq&menu=yes" target="_blank" rel="noreferrer">
-              <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/tencentqq.svg" alt="" />QQ 2306769833
+            <a class="line-sidebar__item" href="https://wpa.qq.com/msgrd?v=3&uin=2306769833&site=qq&menu=yes" target="_blank" rel="noreferrer">
+              <span class="line-sidebar__marker" aria-hidden="true"></span>
+              <span class="line-sidebar__label"><span class="line-sidebar__index">03</span><span class="line-sidebar__text">QQ 2306769833</span><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/tencentqq.svg" alt="" /></span>
             </a>
-            <a class="reveal-item" href="weixin://dl/chat?chl2306769833" aria-label="微信联系方式 chl2306769833">
-              <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/wechat.svg" alt="" />微信 chl2306769833
+            <a class="line-sidebar__item" href="weixin://dl/chat?chl2306769833" aria-label="微信联系方式 chl2306769833">
+              <span class="line-sidebar__marker" aria-hidden="true"></span>
+              <span class="line-sidebar__label"><span class="line-sidebar__index">04</span><span class="line-sidebar__text">微信 chl2306769833</span><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/wechat.svg" alt="" /></span>
             </a>
-            <a class="reveal-item" href="https://b23.tv/LqmeoDq" target="_blank" rel="noreferrer">
-              <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/bilibili.svg" alt="" />Bilibili 10as12
+            <a class="line-sidebar__item" href="https://b23.tv/LqmeoDq" target="_blank" rel="noreferrer">
+              <span class="line-sidebar__marker" aria-hidden="true"></span>
+              <span class="line-sidebar__label"><span class="line-sidebar__index">05</span><span class="line-sidebar__text">Bilibili 10as12</span><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/bilibili.svg" alt="" /></span>
             </a>
-            <a class="reveal-item button button-primary resume-download" href="CHL_resume.pdf" download>Download PDF / 下载简历</a>
-          </div>
+            <a class="line-sidebar__item resume-download" href="CHL_resume.pdf" download>
+              <span class="line-sidebar__marker" aria-hidden="true"></span>
+              <span class="line-sidebar__label"><span class="line-sidebar__index">06</span><span class="line-sidebar__text">Download PDF / 下载简历</span></span>
+            </a>
+          </nav>
         </div>
       </section>
 
@@ -301,6 +274,7 @@
       <span></span><span></span><span></span><span></span><span></span>
     </div>
     <nav class="side-dock" aria-label="Page navigation">
+      <button class="dock-toggle" type="button" data-dock-toggle aria-label="收起导航" aria-expanded="true"></button>
       <a class="dock-item" href="#home" aria-label="Home"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/house.svg" alt="" /><small>Home</small></a>
       <a class="dock-item" href="#works" aria-label="Works"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/images.svg" alt="" /><small>Works</small></a>
       <a class="dock-item" href="#about" aria-label="Resume"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/user-round.svg" alt="" /><small>Resume</small></a>
@@ -340,19 +314,18 @@
       <div class="all-works-content" data-all-works-content></div>
     </dialog>
     <script src="click-spark.js"></script>
-    <script src="split-flap.js?v=2"></script>
+    <script src="split-flap.js?v=7"></script>
     <script src="text-pressure.js?v=7"></script>
-    <script src="video-controls.js?v=8"></script>
     <script src="spotlight-card.js"></script>
-    <script src="profile-card.js?v=5"></script>
-    <script src="work-details.js?v=10"></script>
-    <script src="bounce-cards.js?v=6"></script>
-    <script src="nav-transition.js?v=4"></script>
+    <script src="work-details.js?v=14"></script>
+    <script src="bounce-cards.js?v=10"></script>
+    <script src="nav-transition.js?v=9"></script>
     <script src="ui-sound.js"></script>
     <script src="reveal-on-scroll.js"></script>
     <script src="contact-title-scroll.js"></script>
-    <script src="gradual-blur.js"></script>
-    <script src="boot-loader.js?v=3"></script>
+    <script src="line-sidebar.js?v=3"></script>
+    <script src="gradual-blur.js?v=4"></script>
+    <script src="boot-loader.js?v=4"></script>
   </body>
 </html>
 

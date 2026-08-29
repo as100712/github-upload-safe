@@ -1,6 +1,9 @@
 (function () {
   const links = document.querySelectorAll(".side-dock .dock-item");
+  const dock = document.querySelector(".side-dock");
+  const dockToggle = document.querySelector("[data-dock-toggle]");
   const overlay = document.querySelector(".nav-transition");
+  const contactSection = document.querySelector("#contact");
   const root = document.documentElement;
   const body = document.body;
 
@@ -26,6 +29,37 @@
       panel.appendChild(face);
     }
   });
+
+  function setDockCollapsed(collapsed) {
+    if (!dock || !dockToggle) {
+      return;
+    }
+
+    dock.classList.toggle("is-collapsed", collapsed);
+    dockToggle.setAttribute("aria-expanded", collapsed ? "false" : "true");
+    dockToggle.setAttribute("aria-label", collapsed ? "展开导航" : "收起导航");
+  }
+
+  if (dockToggle) {
+    dockToggle.addEventListener("click", () => {
+      setDockCollapsed(!dock.classList.contains("is-collapsed"));
+    });
+  }
+
+  if (contactSection && "IntersectionObserver" in window) {
+    const contactObserver = new IntersectionObserver(
+      ([entry]) => {
+        setDockCollapsed(entry.isIntersecting);
+      },
+      {
+        root: null,
+        threshold: 0.28,
+        rootMargin: "-18% 0px -18% 0px",
+      }
+    );
+
+    contactObserver.observe(contactSection);
+  }
 
   function randomizeFaces() {
     panels.forEach((panel) => {
@@ -85,6 +119,9 @@
 
       timer = window.setTimeout(() => {
         jumpTo(targetId);
+        if (targetId === "contact") {
+          setDockCollapsed(true);
+        }
       }, 920);
 
       window.setTimeout(() => {

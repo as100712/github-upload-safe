@@ -120,20 +120,23 @@
     }
   });
 
-  function startHeroVideo() {
+  function resetHeroVideo() {
     video.currentTime = 0;
     if (audio?.getAttribute("src")) {
       audio.currentTime = 0;
     }
-    playVideo();
+    video.pause();
+    if (audio?.getAttribute("src")) {
+      audio.pause();
+    }
   }
 
   updateVolumeButton();
   if (document.body.classList.contains("site-loading")) {
     video.pause();
-    window.addEventListener("boot:enter", startHeroVideo, { once: true });
+    window.addEventListener("boot:enter", resetHeroVideo, { once: true });
   } else {
-    startHeroVideo();
+    resetHeroVideo();
   }
   document.addEventListener("pointerdown", unlockSoundOnce);
   document.addEventListener("wheel", unlockSoundOnce, { passive: true });

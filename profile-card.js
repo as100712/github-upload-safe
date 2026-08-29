@@ -65,14 +65,5 @@
 
     card.addEventListener("pointermove", setCardPointer);
     card.addEventListener("pointerleave", resetCardPointer);
-    card.addEventListener("pointerdown", () => {
-      card.classList.toggle("is-flipped");
-    });
-    card.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        card.classList.toggle("is-flipped");
-      }
-    });
   });
 })();

@@ -1,58 +1,61 @@
 (function () {
-  const finalText = "陈翰林";
-  const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  const finalText = "CHL";
   const title = document.querySelector("[data-split-flap]");
+  const mosaic = document.querySelector(".hero-mosaic");
 
   if (!title) {
     return;
   }
 
-  const chars = Array.from(finalText);
-  const totalDuration = 4000;
-  const flipsPerChar = 8;
-  const stagger = 140;
-  const flipDuration = Math.max(90, Math.floor((totalDuration - stagger * (chars.length - 1)) / flipsPerChar));
-
   title.setAttribute("aria-label", finalText);
   title.textContent = "";
 
-  const tiles = chars.map(() => {
+  const tiles = Array.from(finalText).map((char) => {
     const tile = document.createElement("span");
     tile.className = "flap-tile";
+    tile.textContent = char;
     title.appendChild(tile);
     return tile;
   });
 
-  function randomChar() {
-    return charset[Math.floor(Math.random() * charset.length)];
+  function buildMosaic() {
+    if (!mosaic || mosaic.children.length) {
+      return;
+    }
+
+    const cols = 14;
+    const rows = 3;
+    for (let index = 0; index < cols * rows; index += 1) {
+      const block = document.createElement("span");
+      block.style.gridColumn = String((index % cols) + 1);
+      block.style.gridRow = String(Math.floor(index / cols) + 1);
+      block.style.transitionDelay = `${(index % cols) * 42 + Math.floor(index / cols) * 86}ms`;
+      mosaic.appendChild(block);
+    }
   }
 
-  function setTile(tile, char) {
-    tile.textContent = char;
-  }
+  function startReveal() {
+    buildMosaic();
+    const hero = document.querySelector(".hero");
 
-  function animateTile(tile, finalChar, delay) {
     window.setTimeout(() => {
-      for (let flip = 1; flip <= flipsPerChar; flip += 1) {
-        window.setTimeout(() => {
-          setTile(tile, flip === flipsPerChar ? finalChar : randomChar());
-          tile.classList.remove("is-flipping");
-          void tile.offsetWidth;
-          tile.classList.add("is-flipping");
-        }, flip * flipDuration);
-      }
-    }, delay);
-  }
+      hero?.classList.add("is-band-visible");
+    }, 320);
 
-  function startSplitFlap() {
-    tiles.forEach((tile) => setTile(tile, randomChar()));
-    tiles.forEach((tile, index) => animateTile(tile, chars[index], index * stagger));
+    window.setTimeout(() => {
+      hero?.classList.add("is-mosaic-visible");
+    }, 720);
+
+    window.setTimeout(() => {
+      mosaic?.classList.add("is-clearing");
+    }, 1320);
+
   }
 
   if (document.body.classList.contains("site-loading")) {
-    tiles.forEach((tile, index) => setTile(tile, chars[index]));
-    window.addEventListener("boot:enter", () => window.setTimeout(startSplitFlap, 1280), { once: true });
+    tiles.forEach((tile) => tile.classList.add("is-flipping"));
+    window.addEventListener("boot:enter", () => window.setTimeout(startReveal, 980), { once: true });
   } else {
-    startSplitFlap();
+    startReveal();
   }
 })();

@@ -10,12 +10,29 @@
     const cards = shell.querySelectorAll(".bounce-card");
     const prevButton = shell.querySelector("[data-gallery-prev]");
     const nextButton = shell.querySelector("[data-gallery-next]");
+    const dots = document.createElement("div");
+    const dotButtons = [];
 
     if (!gallery || !cards.length) {
       return;
     }
 
     cards.forEach((card) => card.classList.add("is-visible"));
+    dots.className = "gallery-dots";
+    dots.setAttribute("aria-label", "作品位置");
+    cards.forEach((card, index) => {
+      const dot = document.createElement("button");
+      dot.className = "gallery-dot";
+      dot.type = "button";
+      dot.setAttribute("aria-label", `第 ${index + 1} 个作品`);
+      dot.addEventListener("click", () => {
+        pauseAutoScroll();
+        card.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      });
+      dotButtons.push(dot);
+      dots.appendChild(dot);
+    });
+    shell.appendChild(dots);
 
     let isDragging = false;
     let isInteracting = false;
@@ -43,10 +60,37 @@
     function scrollGallery(direction) {
       const firstCard = cards[0];
       const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 360;
+      const styles = window.getComputedStyle(gallery);
+      const gap = parseFloat(styles.columnGap || styles.gap) || 0;
       pauseAutoScroll();
       gallery.scrollBy({
-        left: direction * (cardWidth + 28),
+        left: direction * (cardWidth + gap),
         behavior: "smooth",
+      });
+    }
+
+    function updateDots() {
+      if (!dotButtons.length) {
+        return;
+      }
+
+      const galleryRect = gallery.getBoundingClientRect();
+      const galleryCenter = galleryRect.left + galleryRect.width / 2;
+      let activeIndex = 0;
+      let closestDistance = Infinity;
+
+      cards.forEach((card, index) => {
+        const rect = card.getBoundingClientRect();
+        const center = rect.left + rect.width / 2;
+        const distance = Math.abs(center - galleryCenter);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          activeIndex = index;
+        }
+      });
+
+      dotButtons.forEach((dot, index) => {
+        dot.classList.toggle("is-active", index === activeIndex);
       });
     }
 
@@ -62,6 +106,23 @@
         autoTarget = gallery.scrollLeft;
         wheelFrame = 0;
       }
+    }
+
+    function normalizeLoop(value) {
+      const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+      if (maxScroll <= 0) {
+        return 0;
+      }
+
+      if (value >= maxScroll - 1) {
+        return 0;
+      }
+
+      if (value <= 1) {
+        return maxScroll;
+      }
+
+      return value;
     }
 
     function autoScrollGallery() {
@@ -97,7 +158,7 @@
         event.preventDefault();
         pauseAutoScroll();
         const maxScroll = gallery.scrollWidth - gallery.clientWidth;
-        wheelTarget = Math.max(0, Math.min(maxScroll, wheelTarget + delta * 0.75));
+        wheelTarget = normalizeLoop(Math.max(0, Math.min(maxScroll, wheelTarget + delta * 0.75)));
 
         if (!wheelFrame) {
           wheelFrame = requestAnimationFrame(animateWheelScroll);
@@ -107,6 +168,7 @@
     );
 
     gallery.addEventListener("scroll", () => {
+      updateDots();
       if (isAutoMoving || isDragging || wheelFrame) {
         return;
       }
@@ -123,7 +185,7 @@
     });
 
     gallery.addEventListener("pointerdown", (event) => {
-      if (event.target.closest("[data-card-zoom], [data-media-element]")) {
+      if (event.target.closest("[data-card-zoom], [data-media-element], [data-view-all], [data-gallery-prev], [data-gallery-next], .gallery-dot")) {
         return;
       }
 
@@ -148,7 +210,7 @@
       }
 
       didDrag = true;
-      gallery.scrollLeft = dragStartScroll - dragDistance * 1.05;
+      gallery.scrollLeft = normalizeLoop(dragStartScroll - dragDistance * 1.05);
       wheelTarget = gallery.scrollLeft;
       autoTarget = gallery.scrollLeft;
     });
@@ -192,6 +254,7 @@
       observer.observe(shell);
     }
 
+    updateDots();
     window.setTimeout(autoScrollGallery, 34);
   }
 
