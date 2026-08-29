@@ -120,6 +120,8 @@
 
   let currentFolderIndex = 0;
   let shouldReturnToAllWorks = false;
+  let pressedWorkCard = null;
+  let lastWorkCardClick = null;
 
   if (!dialog || !image || !kicker || !title || !text) {
     return;
@@ -202,18 +204,6 @@
         .join("");
 
       gallery.innerHTML = cards;
-      gallery.querySelectorAll("[data-work-card]").forEach((card) => {
-        card.addEventListener("click", (event) => {
-          const src = card.dataset.mediaSrc;
-          if (!src) {
-            return;
-          }
-
-          event.preventDefault();
-          event.stopPropagation();
-          openLightbox(src);
-        });
-      });
     });
   }
 
@@ -350,32 +340,104 @@
       return;
     }
 
-    const card = event.target.closest("[data-work-card]");
-    const zoomTrigger = event.target.closest("[data-card-zoom], [data-media-element], [data-zoomable]");
+    const zoomTrigger = event.target.closest("[data-zoomable]");
     if (zoomTrigger) {
-      const src = card?.dataset.mediaSrc || zoomTrigger.getAttribute("src");
+      const src = zoomTrigger.getAttribute("src");
       event.preventDefault();
       event.stopPropagation();
       openLightbox(src);
       return;
     }
 
+    const card = event.target.closest("[data-work-card]");
     if (!card) {
       return;
     }
 
-    const src = card.dataset.mediaSrc;
-    if (src) {
+    event.preventDefault();
+    event.stopPropagation();
+  });
+
+  document.addEventListener(
+    "pointerdown",
+    (event) => {
+      const card = event.target.closest("[data-work-card]");
+      if (!card) {
+        pressedWorkCard = null;
+        return;
+      }
+
+      pressedWorkCard = {
+        card,
+        x: event.clientX,
+        y: event.clientY,
+      };
+    },
+    true
+  );
+
+  document.addEventListener(
+    "pointerup",
+    (event) => {
+      if (!pressedWorkCard) {
+        return;
+      }
+
+      const press = pressedWorkCard;
+      pressedWorkCard = null;
+      const moveDistance = Math.hypot(event.clientX - press.x, event.clientY - press.y);
+      const gallery = press.card.closest(".bounce-cards");
+
+      if (moveDistance > 18 || gallery?.dataset.didDrag === "true") {
+        lastWorkCardClick = null;
+        return;
+      }
+
+      const now = performance.now();
+      const isDoubleClick =
+        lastWorkCardClick &&
+        lastWorkCardClick.card === press.card &&
+        now - lastWorkCardClick.time < 520 &&
+        Math.hypot(event.clientX - lastWorkCardClick.x, event.clientY - lastWorkCardClick.y) < 28;
+
+      if (!isDoubleClick) {
+        lastWorkCardClick = {
+          card: press.card,
+          time: now,
+          x: event.clientX,
+          y: event.clientY,
+        };
+        return;
+      }
+
+      const src = press.card.dataset.mediaSrc;
+      lastWorkCardClick = null;
+      if (!src) {
+        return;
+      }
+
       event.preventDefault();
       event.stopPropagation();
       openLightbox(src);
+    },
+    true
+  );
+
+  document.addEventListener("dblclick", (event) => {
+    const card = event.target.closest("[data-work-card]");
+    const media = event.target.closest("[data-media-element]");
+    if (!card && !media) {
       return;
     }
 
-    currentFolderIndex = Number(card.dataset.workIndex);
-    setDetail(Number(card.dataset.mediaIndex) || 0);
-    pausePreviewVideos();
-    showModal(dialog);
+    const src = card?.dataset.mediaSrc || media?.getAttribute("src");
+    if (!src) {
+      return;
+    }
+
+    event.preventDefault();
+    event.stopPropagation();
+    openLightbox(src);
   });
 
   options.forEach((option) => {

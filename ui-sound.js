@@ -1,7 +1,5 @@
 (function () {
   const clickAudio = new Audio("assets/ui-click.mp3");
-  const cooldown = 500;
-  let lastPlayedAt = 0;
 
   clickAudio.preload = "auto";
   clickAudio.volume = 0.42;
@@ -19,12 +17,6 @@
       return;
     }
 
-    const now = performance.now();
-    if (now - lastPlayedAt < cooldown) {
-      return;
-    }
-
-    lastPlayedAt = now;
     clickAudio.currentTime = 0;
     clickAudio.play().catch(() => {});
   }

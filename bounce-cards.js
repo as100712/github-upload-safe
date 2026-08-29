@@ -185,13 +185,14 @@
     });
 
     gallery.addEventListener("pointerdown", (event) => {
-      if (event.target.closest("[data-card-zoom], [data-media-element], [data-view-all], [data-gallery-prev], [data-gallery-next], .gallery-dot")) {
+      if (event.target.closest("[data-card-zoom], [data-view-all], [data-gallery-prev], [data-gallery-next], .gallery-dot")) {
         return;
       }
 
       isDragging = true;
       isInteracting = true;
       didDrag = false;
+      delete gallery.dataset.didDrag;
       dragStartX = event.clientX;
       dragStartScroll = gallery.scrollLeft;
       wheelTarget = gallery.scrollLeft;
@@ -205,11 +206,12 @@
       }
 
       const dragDistance = event.clientX - dragStartX;
-      if (Math.abs(dragDistance) < 6) {
+      if (Math.abs(dragDistance) < 14) {
         return;
       }
 
       didDrag = true;
+      gallery.dataset.didDrag = "true";
       gallery.scrollLeft = normalizeLoop(dragStartScroll - dragDistance * 1.05);
       wheelTarget = gallery.scrollLeft;
       autoTarget = gallery.scrollLeft;
@@ -239,6 +241,9 @@
         if (wasDrag) {
           event.preventDefault();
           event.stopPropagation();
+          window.setTimeout(() => {
+            delete gallery.dataset.didDrag;
+          }, 120);
         }
       },
       true
