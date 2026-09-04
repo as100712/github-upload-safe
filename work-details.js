@@ -56,6 +56,22 @@
     },
     {
       category: "3d",
+      name: "Mechanical Aircraft",
+      title: "机甲",
+      text: "硬表面机甲作品，展示机体造型、材质质感与动态演示效果。",
+      featured: [
+        "assets/works/mech-aircraft/tbrender.webp",
+        "assets/works/mech-aircraft/tbrender_002.webp",
+        "assets/works/mech-aircraft/mechanical-aircraft.mp4",
+      ],
+      media: [
+        "assets/works/mech-aircraft/tbrender.webp",
+        "assets/works/mech-aircraft/tbrender_002.webp",
+        "assets/works/mech-aircraft/mechanical-aircraft.mp4",
+      ],
+    },
+    {
+      category: "3d",
       name: "UE Post FX",
       title: "UE 后期处理特效",
       text: "通过 UE 后期处理与动态演示强化画面节奏，让视觉效果在静帧和运动中保持统一。",
