@@ -2931,6 +2931,75 @@ body.is-nav-transitioning .nav-transition span {
   }
 }
 
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .hero .hero-actions {
+    display: none;
+  }
+
+  .gradual-blur {
+    display: none;
+  }
+
+  .gallery-shell {
+    padding-bottom: 84px;
+  }
+
+  .bounce-cards {
+    min-height: 0;
+    padding: 16px 12px 24px;
+    scroll-snap-type: x proximity;
+  }
+
+  .bounce-card {
+    min-width: 0;
+    height: 380px;
+    min-height: 380px;
+    padding: 24px 20px;
+    color: #ffffff;
+    isolation: isolate;
+  }
+
+  .bounce-card img,
+  .bounce-card:hover img,
+  .bounce-card:focus-visible img {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .bounce-card::after {
+    opacity: 1;
+  }
+
+  .work-card-copy {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .work-card-number {
+    font-size: 96px;
+  }
+
+  .work-card-copy strong {
+    font-size: 26px;
+    line-height: 1.05;
+    overflow-wrap: anywhere;
+  }
+
+  .gallery-dots {
+    bottom: 54px;
+  }
+
+  .view-all-button {
+    right: 12px;
+  }
+
+  .image-lightbox {
+    height: calc(100svh - 24px);
+    max-height: calc(100svh - 24px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .intro-sequence .topbar,
   .intro-sequence .hero-copy,

@@ -15,6 +15,13 @@ build/
 .cache/
 .vite/
 
+# Local previews and document-generation files
+/output/
+/tmp/
+/tools/
+/.playwright-cli/
+/serve-static-temp.mjs
+
 # Secrets should never be uploaded
 .env
 .env.*

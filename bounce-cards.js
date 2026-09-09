@@ -1,5 +1,6 @@
 (function () {
   const galleries = document.querySelectorAll(".gallery-shell");
+  const mobileGallery = window.matchMedia("(max-width: 900px), (hover: none) and (pointer: coarse)");
 
   if (!galleries.length) {
     return;
@@ -126,7 +127,7 @@
     }
 
     function autoScrollGallery() {
-      if (isInView && !isInteracting && gallery.scrollWidth > gallery.clientWidth && !document.querySelector("dialog[open]")) {
+      if (!mobileGallery.matches && isInView && !isInteracting && gallery.scrollWidth > gallery.clientWidth && !document.querySelector("dialog[open]")) {
         gallery.classList.add("is-auto-scrolling");
         const maxScroll = gallery.scrollWidth - gallery.clientWidth;
         autoTarget = autoTarget >= maxScroll ? 0 : autoTarget + 0.7;
@@ -185,6 +186,9 @@
     });
 
     gallery.addEventListener("pointerdown", (event) => {
+      if (mobileGallery.matches && event.pointerType === "touch") {
+        return;
+      }
       if (event.target.closest("[data-card-zoom], [data-view-all], [data-gallery-prev], [data-gallery-next], .gallery-dot")) {
         return;
       }

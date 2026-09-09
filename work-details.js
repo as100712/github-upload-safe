@@ -138,6 +138,8 @@
   let shouldReturnToAllWorks = false;
   let pressedWorkCard = null;
   let lastWorkCardClick = null;
+  const mobilePreview = window.matchMedia("(max-width: 900px), (hover: none) and (pointer: coarse)");
+  let previewObserver = null;
 
   if (!dialog || !image || !kicker || !title || !text) {
     return;
@@ -149,7 +151,11 @@
 
   function mediaMarkup(src, alt) {
     if (isVideo(src)) {
-      return `<video muted loop playsinline preload="metadata" data-media-element data-lazy-video><source src="${src}" /></video>`;
+      if (mobilePreview.matches) {
+        const poster = `assets/video-posters/${src.split("/").pop()}.jpg`;
+        return `<img src="${poster}" alt="${alt}" loading="lazy" decoding="async" data-media-element data-preview-src="${src}" />`;
+      }
+      return `<video muted loop playsinline preload="metadata" data-media-element data-preview-src="${src}" data-lazy-video><source src="${src}" /></video>`;
     }
 
     return `<img src="${src}" alt="${alt}" loading="lazy" decoding="async" data-media-element />`;
@@ -157,15 +163,15 @@
 
   function setupLazyVideos(scope = document) {
     const videos = Array.from(scope.querySelectorAll("[data-lazy-video]"));
-    if (!videos.length || !("IntersectionObserver" in window)) {
+    if (mobilePreview.matches || !videos.length || !("IntersectionObserver" in window)) {
       return;
     }
 
-    const observer = new IntersectionObserver(
+    previewObserver ||= new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const video = entry.target;
-          if (entry.isIntersecting && !document.querySelector("dialog[open]")) {
+          if (!mobilePreview.matches && entry.isIntersecting && !document.querySelector("dialog[open]")) {
             video.play().catch(() => {});
           } else {
             video.pause();
@@ -175,8 +181,18 @@
       { rootMargin: "120px 0px", threshold: 0.2 }
     );
 
-    videos.forEach((video) => observer.observe(video));
+    videos.forEach((video) => previewObserver.observe(video));
   }
+
+  mobilePreview.addEventListener("change", () => {
+    pausePreviewVideos();
+    previewObserver?.disconnect();
+    document.querySelectorAll("[data-preview-src]").forEach((media) => {
+      const alt = media.closest("button").getAttribute("aria-label");
+      media.outerHTML = mediaMarkup(media.dataset.previewSrc, alt);
+    });
+    setupLazyVideos();
+  });
 
   function pausePreviewVideos() {
     document.querySelectorAll("[data-lazy-video]").forEach((video) => video.pause());
@@ -409,6 +425,13 @@
         return;
       }
 
+      if (mobilePreview.matches) {
+        lastWorkCardClick = null;
+        event.preventDefault();
+        openLightbox(press.card.dataset.mediaSrc);
+        return;
+      }
+
       const now = performance.now();
       const isDoubleClick =
         lastWorkCardClick &&
@@ -438,6 +461,11 @@
     },
     true
   );
+
+  document.addEventListener("pointercancel", () => {
+    pressedWorkCard = null;
+    lastWorkCardClick = null;
+  }, true);
 
   document.addEventListener("dblclick", (event) => {
     const card = event.target.closest("[data-work-card]");
