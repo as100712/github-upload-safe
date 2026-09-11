@@ -2881,6 +2881,10 @@ body.is-nav-transitioning .nav-transition span {
     display: none;
   }
 
+  #appflow-chat-container > div:first-child {
+    bottom: calc(86px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
   .work-dialog {
     inset: 0;
     width: calc(100vw - 20px);
