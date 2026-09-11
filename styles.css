@@ -1754,7 +1754,7 @@ body.is-nav-transitioning .page-shell {
 
 .contact-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(220px, 340px);
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 460px);
   align-items: end;
   gap: 36px;
   width: 100%;
@@ -2649,7 +2649,7 @@ body.is-nav-transitioning .nav-transition span {
   }
 
   .contact-links {
-    justify-items: start;
+    justify-self: start;
   }
 
   .contact-links a {
@@ -2659,10 +2659,11 @@ body.is-nav-transitioning .nav-transition span {
 
   .line-sidebar {
     width: min(100%, 360px);
+    align-items: flex-start;
     padding-left: 0;
     padding-right: 48px;
     --marker-length: 38px;
-    --max-shift: 18px;
+    --max-shift: 0px;
   }
 
   .line-sidebar__label {
